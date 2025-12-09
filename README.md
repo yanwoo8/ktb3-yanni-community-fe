@@ -1,6 +1,7 @@
 # 커뮤니티 프론트엔드
 
-바닐라 JavaScript, HTML, CSS로 만든 간단한 커뮤니티 웹 애플리케이션입니다.
+바닐라 JavaScript, HTML, CSS로 만든 간단한 커뮤니티 웹 애플리케이션입니다.  
+백엔드 프로젝트: [ktb3-yanni-community-be](https://github.com/yanwoo8/ktb3-yanni-community-be.git)
 
 ![HTML](https://img.shields.io/badge/HTML-gray?style=flat&logo=html5&logoColor=orange)
 ![CSS](https://img.shields.io/badge/CSS-gray?style=flat&logo=css&logoColor=blue)
@@ -9,10 +10,11 @@
 
 ## 📁 프로젝트 구조
 ```
-FEproject/
+ktb3-yanni-community-fe/
 ├── index.html             # 메인 페이지
 ├── README.md              # 사용법 및 학습 가이드
 ├── features.md            # Figma 기반 페이지 기능명세서
+├── studynote.md           # 프로젝트를 통해 새로 알게 된 내용 기록
 ├── pages/
 │   ├── register.html      # 회원가입
 │   ├── login.html         # 로그인
