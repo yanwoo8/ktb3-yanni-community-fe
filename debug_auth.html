@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인증 디버깅</title>
+</head>
+<body>
+    <h1>인증 디버깅</h1>
+    <button onclick="checkLocalStorage()">localStorage 확인</button>
+    <button onclick="testAuth()">인증 테스트</button>
+    <button onclick="clearStorage()">localStorage 클리어</button>
+    <pre id="output"></pre>
+
+    <script src="js/api.js"></script>
+    <script>
+        function checkLocalStorage() {
+            const output = document.getElementById('output');
+            const userStr = localStorage.getItem('user');
+
+            output.textContent = 'localStorage.getItem("user"):\n' +
+                                 JSON.stringify(JSON.parse(userStr), null, 2);
+        }
+
+        async function testAuth() {
+            const output = document.getElementById('output');
+
+            try {
+                const response = await fetch('http://localhost:8000/posts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user')).access_token
+                    },
+                    body: JSON.stringify({
+                        title: '테스트',
+                        content: '인증 테스트'
+                    })
+                });
+
+                const result = await response.json();
+                output.textContent = '응답:\n' + JSON.stringify(result, null, 2);
+            } catch (error) {
+                output.textContent = '에러: ' + error.message;
+            }
+        }
+
+        function clearStorage() {
+            localStorage.removeItem('user');
+            document.getElementById('output').textContent = 'localStorage 클리어됨';
+        }
+    </script>
+</body>
+</html>

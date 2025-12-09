@@ -10,13 +10,35 @@ async function apiCall(endpoint, method = 'GET', data = null) {
         }
     };
 
+    // JWT 토큰이 있으면 Authorization 헤더에 추가
+    const userStr = localStorage.getItem('user');
+    console.log('[API] localStorage user:', userStr);
+    if (userStr) {
+        const userData = JSON.parse(userStr);
+        console.log('[API] Parsed user data:', userData);
+        console.log('[API] Access token:', userData.access_token);
+        if (userData.access_token) {
+            options.headers['Authorization'] = `Bearer ${userData.access_token}`;
+            console.log('[API] Authorization header added');
+        } else {
+            console.warn('[API] No access_token found in user data');
+        }
+    } else {
+        console.warn('[API] No user data in localStorage');
+    }
+
     // 데이터가 있으면 body에 추가
     if (data) {
         options.body = JSON.stringify(data);
     }
 
+    console.log('[API] Request:', method, endpoint);
+    console.log('[API] Headers:', options.headers);
+    console.log('[API] Body:', options.body);
+
     try {
         const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+        console.log('[API] Response status:', response.status);
         const result = await response.json();
 
         if (!response.ok) {
@@ -54,11 +76,10 @@ async function getPosts() {
 }
 
 // 게시글 작성 API
-async function createPost(title, content, authorId, imageUrl = null) {
+async function createPost(title, content, imageUrl = null) {
     return await apiCall('/posts', 'POST', {
         title,
         content,
-        author_id: authorId,
         image_url: imageUrl
     });
 }
@@ -114,10 +135,9 @@ async function getComments(postId) {
 }
 
 // 댓글 작성 API
-async function createComment(postId, content, authorId) {
+async function createComment(postId, content) {
     return await apiCall(`/posts/${postId}/comments`, 'POST', {
-        content,
-        author_id: authorId
+        content
     });
 }
 

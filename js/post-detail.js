@@ -11,10 +11,11 @@ let editingCommentId = null;
 // 게시글 상세 정보 표시
 async function displayPostDetail() {
     try {
-        const post = await getPostDetail(postId);
+        const response = await getPostDetail(postId);
+        const post = response.data;
         const postDetailEl = document.getElementById('postDetail');
 
-        const isAuthor = post.author_id === currentUser.id;
+        const isAuthor = post.author_id === currentUser.user.id;
 
         let html = '<div class="post-detail-header">';
         html += '<h1 class="post-detail-title">' + post.title + '</h1>';
@@ -62,7 +63,8 @@ async function displayPostDetail() {
 // 댓글 목록 표시
 async function displayComments() {
     try {
-        const comments = await getComments(postId);
+        const response = await getComments(postId);
+        const comments = response.data || [];
         const commentsListEl = document.getElementById('commentsList');
         const commentCountEl = document.getElementById('commentCount');
 
@@ -84,7 +86,7 @@ async function displayComments() {
             html += '</div>';
             html += '<div class="comment-text">' + comment.content + '</div>';
 
-            if (comment.author_id === currentUser.id) {
+            if (comment.author_id === currentUser.user.id) {
                 const escapedContent = comment.content.replace(/'/g, "\\'").replace(/"/g, '\\"').replace(/\n/g, '\\n');
                 html += '<div class="comment-actions">';
                 html += '<button onclick="editComment(' + comment.id + ', \'' + escapedContent + '\')" class="comment-edit-btn">수정</button>';
@@ -130,7 +132,7 @@ document.getElementById('cancelDeletePost').addEventListener('click', () => {
 // 좋아요 처리
 async function handleLike() {
     try {
-        await toggleLike(postId, currentUser.id);
+        await toggleLike(postId, currentUser.user.id);
         displayPostDetail();
     } catch (error) {
         alert('좋아요 처리 실패: ' + error.message);
@@ -158,7 +160,7 @@ document.getElementById('commentSubmitBtn').addEventListener('click', async () =
             editingCommentId = null;
             document.getElementById('commentSubmitBtn').textContent = '댓글 등록';
         } else {
-            await createComment(postId, content, currentUser.id);
+            await createComment(postId, content);
         }
 
         commentInput.value = '';

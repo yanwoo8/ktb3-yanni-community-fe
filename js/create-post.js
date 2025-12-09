@@ -16,8 +16,8 @@ document.getElementById('createPostForm').addEventListener('submit', async (e) =
     const messageEl = document.getElementById('message');
 
     try {
-        // 6. API 호출 (await 사용하여 비동기 처리 - 완료까지 대기)
-        await createPost(title, content, currentUser.id, imageUrl);
+        // 6. API 호출 (JWT 토큰으로 자동 인증, author_id 불필요)
+        await createPost(title, content, imageUrl);
 
         // 7. 성공 메시지 표시
         messageEl.textContent = '게시글 작성 성공! 목록으로 이동합니다.';

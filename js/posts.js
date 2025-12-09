@@ -51,7 +51,7 @@ async function handleLike(event, postId) {
     event.stopPropagation();
 
     try {
-        await toggleLike(postId, currentUser.id);
+        await toggleLike(postId, currentUser.user.id);
         displayPosts(); // 목록 새로고침
     } catch (error) {
         alert('좋아요 처리 실패: ' + error.message);

@@ -34,6 +34,9 @@ FEproject/
     ├── posts-detail.js    # 게시글 상세 조회
     └── create-post.js     # 게시글 작성
 ```
+- (+JWT) 로그인 후 받은 JWT 토큰을 Authorization 헤더에 포함시킴.
+
+
 
 ## 🚀 시작하기
 
