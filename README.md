@@ -37,9 +37,13 @@ FEproject/
 
 ## 🚀 시작하기
 
-### 1. 백엔드 서버 실행
+#### 0. 깃 클론
+```sh
+git clone https://github.com/yanwoo8/ktb3-yanni-community-fe.git
+cd ktb3-yanni-community-fe
+```
 
-1. 백엔드 API 서버 실행
+#### 1. 백엔드 서버 실행
 ```sh
 git clone https://github.com/yanwoo8/ktb3-yanni-community-be.git
 cd ktb3-yanni-community-be
@@ -48,7 +52,7 @@ cd ktb3-yanni-community-be
 # http://localhost:3000 에서 실행됨
 ```
 
-2. 프론트엔드 실행
+#### 2. 프론트엔드 실행
 ```sh
 cd ..
 python -m http.server 3000
