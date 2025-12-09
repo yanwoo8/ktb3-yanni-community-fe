@@ -78,7 +78,7 @@ const user = JSON.parse(localStorage.getItem('user'));
 
 ### 3. DOM 조작
 ```javascript
-// 폼 제출 이벤트
+// 폼 제출 이벤트 @ js/create-post.js
 form.addEventListener('submit', async (e) => {
     e.preventDefault();  // 기본 동작 방지
     // 처리 로직
