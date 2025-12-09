@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 목록</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>커뮤니티</h1>
+                <nav>
+                    <a href="posts.html">게시글</a>
+                    <a href="create-post.html">글쓰기</a>
+                    <div class="profile-menu">
+                        <div class="profile-icon" id="profileIcon">
+                            <img id="profileImage" src="" alt="프로필" style="display: none;">
+                            <div id="profilePlaceholder" class="profile-placeholder"></div>
+                        </div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="edit-profile.html">회원 정보 (닉네임/비밀번호) 수정</a>
+                            <a href="#" id="logoutBtn">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <h2>게시글 목록</h2>
+            <div id="postsList"></div>
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/posts.js"></script>
+</body>
+</html>

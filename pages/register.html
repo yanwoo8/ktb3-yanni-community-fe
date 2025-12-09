@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>커뮤니티</h1>
+            <nav>
+                <a href="../index.html">홈</a>
+                <a href="login.html">로그인</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <h2>회원가입</h2>
+                <form id="registerForm">
+                    <input type="email" id="email" placeholder="이메일" required>
+                    <p class="error-message" id="emailError"></p>
+
+                    <input type="password" id="password" placeholder="비밀번호" required>
+                    <p class="error-message" id="passwordError"></p>
+
+                    <input type="password" id="passwordConfirm" placeholder="비밀번호 확인" required>
+                    <p class="error-message" id="passwordConfirmError"></p>
+
+                    <input type="text" id="nickname" placeholder="닉네임" required>
+                    <p class="error-message" id="nicknameError"></p>
+
+                    <input type="text" id="profileImage" placeholder="프로필 이미지 URL (선택)">
+
+                    <button type="submit" id="registerButton" disabled>회원가입</button>
+                </form>
+                <p class="message" id="message"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/validation.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>

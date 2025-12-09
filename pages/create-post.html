@@ -1,0 +1,40 @@
+// create-post.html
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 작성</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>커뮤니티</h1>
+            <nav>
+                <a href="posts.html">게시글</a>
+                <a href="create-post.html">글쓰기</a>
+                <a href="#" id="logoutBtn">로그아웃</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <h2>게시글 작성</h2>
+                <form id="createPostForm">
+                    <input type="text" id="title" placeholder="제목" required>
+                    <textarea id="content" placeholder="내용" rows="10" required></textarea>
+                    <input type="text" id="imageUrl" placeholder="이미지 URL (선택)">
+                    <button type="submit">작성하기</button>
+                </form>
+                <p class="message" id="message"></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/create-post.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>커뮤니티 - 메인</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>커뮤니티</h1>
+            <nav id="nav">
+                <a href="index.html">홈</a>
+                <a href="pages/login.html">로그인</a>
+                <a href="pages/register.html">회원가입</a>
+            </nav>
+        </header>
+
+        <main>
+            <div class="welcome">
+                <h2>환영합니다!</h2>
+                <p>로그인하여 게시글을 확인하세요.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // 로그인 상태 확인하여 리다이렉트
+        const user = getUser();
+        if (user) {
+            // 로그인 상태면 게시글 목록으로 이동
+            window.location.href = 'pages/posts.html';
+        }
+    </script>
+</body>
+</html>

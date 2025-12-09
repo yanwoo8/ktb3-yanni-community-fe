@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시글 상세</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>커뮤니티</h1>
+                <nav>
+                    <a href="posts.html">게시글</a>
+                    <a href="create-post.html">글쓰기</a>
+                    <div class="profile-menu">
+                        <div class="profile-icon" id="profileIcon">
+                            <img id="profileImage" src="" alt="프로필" style="display: none;">
+                            <div id="profilePlaceholder" class="profile-placeholder"></div>
+                        </div>
+                        <div class="profile-dropdown" id="profileDropdown">
+                            <a href="edit-profile.html">회원 정보 수정</a>
+                            <a href="#" id="logoutBtn">로그아웃</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- 섹션0: 뒤로가기 -->
+            <button class="back-btn" onclick="window.location.href='posts.html'">← 뒤로가기</button>
+
+            <!-- 게시글 상세 -->
+            <div id="postDetail" class="post-detail">
+                <!-- JavaScript로 동적 생성 -->
+            </div>
+
+            <!-- 댓글 섹션 -->
+            <div class="comment-section">
+                <h3>댓글 <span id="commentCount">0</span></h3>
+                
+                <!-- 섹션5: 댓글 입력 -->
+                <div class="comment-input-area">
+                    <textarea id="commentInput" placeholder="댓글을 입력하세요" rows="3"></textarea>
+                    <button id="commentSubmitBtn" disabled>댓글 등록</button>
+                </div>
+
+                <!-- 섹션6: 댓글 목록 -->
+                <div id="commentsList"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 게시글 삭제 확인 모달 -->
+    <div id="deletePostModal" class="modal">
+        <div class="modal-content">
+            <h3>게시글 삭제</h3>
+            <p>게시글을 삭제하시겠습니까?<br>삭제한 내용은 복구할 수 없습니다.</p>
+            <div class="modal-buttons">
+                <button type="button" id="cancelDeletePost" class="modal-btn cancel-btn">취소</button>
+                <button type="button" id="confirmDeletePost" class="modal-btn confirm-btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 댓글 삭제 확인 모달 -->
+    <div id="deleteCommentModal" class="modal">
+        <div class="modal-content">
+            <h3>댓글 삭제</h3>
+            <p>댓글을 삭제하시겠습니까?<br>삭제한 내용은 복구할 수 없습니다.</p>
+            <div class="modal-buttons">
+                <button type="button" id="cancelDeleteComment" class="modal-btn cancel-btn">취소</button>
+                <button type="button" id="confirmDeleteComment" class="modal-btn confirm-btn">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/post-detail.js"></script>
+</body>
+</html>
